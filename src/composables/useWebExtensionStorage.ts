@@ -133,6 +133,8 @@ export function useWebExtensionStorage<T extends(string | number | boolean | obj
     async () => {
       try {
         await (data.value == null ? storageInterface.removeItem(key) : storageInterface.setItem(key, await serializer.write(data.value)))
+        // eslint-disable-next-line no-console
+        console.log('setItem', data.value)
       }
       catch (error) {
         onError(error)
